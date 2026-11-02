@@ -6,6 +6,8 @@ import { Paciente } from './entities/paciente.entity.js';
 import { Atendimento } from './entities/atendimento.entity.js';
 import { Profissional } from './entities/profissional.entity.js';
 import { Triagem } from './entities/triagem.entity.js';
+
+import { PacientesModule } from './pacientes/pacientes.module.js';
 import { FilaModule } from './fila/fila.module.js';
 
 @Module({
@@ -13,8 +15,11 @@ import { FilaModule } from './fila/fila.module.js';
     ConfigModule.forRoot({
       isGlobal: true,
     }),
+
     TypeOrmModule.forRootAsync({
-      imports: [ConfigModule],
+      imports: [ConfigModule, FilaModule,
+        PacientesModule
+      ],
       inject: [ConfigService],
       useFactory: (config: ConfigService) => ({
         type: 'postgres' as const,
@@ -25,8 +30,12 @@ import { FilaModule } from './fila/fila.module.js';
         database: config.get<string>('DB_DATABASE', 'ubs'),
         entities: [Paciente, Atendimento, Profissional, Triagem],
         synchronize: false,
+        ssl: {
+          rejectUnauthorized:false,
+        },
       }),
     }),
+
     FilaModule,
   ],
 })
