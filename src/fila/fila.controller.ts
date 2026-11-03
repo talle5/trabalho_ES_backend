@@ -6,6 +6,7 @@ import {
   Param,
   ParseIntPipe,
   Body,
+  Query,
   ParseEnumPipe,
 } from '@nestjs/common';
 
@@ -16,9 +17,19 @@ import { StatusAtendimento } from '../entities/atendimento.entity.js';
 export class FilaController {
   constructor(private readonly filaService: FilaService) {}
 
+  // Esta rota precisa vir antes de ':id'
+  @Get('profissionais')
+  listarProfissionais() {
+    return this.filaService.listarProfissionais();
+  }
+
   @Get()
-  listarFila() {
-    return this.filaService.listarFila();
+  listarFila(
+    @Query('profissionalId', new ParseIntPipe({ optional: true }))
+    profissionalId?: number,
+    @Query('busca') busca?: string,
+  ) {
+    return this.filaService.listarFila(profissionalId, busca);
   }
 
   @Get(':id')
@@ -32,6 +43,7 @@ export class FilaController {
     dados: {
       pacienteId: number;
       senha: string;
+      profissionalId?: number;
     },
   ) {
     return this.filaService.criarAtendimento(dados);
@@ -44,5 +56,10 @@ export class FilaController {
     status: StatusAtendimento,
   ) {
     return this.filaService.atualizarStatus(id, status);
+  }
+
+  @Patch(':id/remover')
+  removerDaFila(@Param('id', ParseIntPipe) id: number) {
+    return this.filaService.removerDaFila(id);
   }
 }

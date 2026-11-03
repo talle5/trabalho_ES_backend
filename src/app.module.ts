@@ -17,9 +17,7 @@ import { FilaModule } from './fila/fila.module.js';
     }),
 
     TypeOrmModule.forRootAsync({
-      imports: [ConfigModule, FilaModule,
-        PacientesModule
-      ],
+      imports: [ConfigModule, FilaModule, PacientesModule],
       inject: [ConfigService],
       useFactory: (config: ConfigService) => ({
         type: 'postgres' as const,
@@ -31,7 +29,7 @@ import { FilaModule } from './fila/fila.module.js';
         entities: [Paciente, Atendimento, Profissional, Triagem],
         synchronize: false,
         ssl: {
-          rejectUnauthorized:false,
+          rejectUnauthorized: false,
         },
       }),
     }),
