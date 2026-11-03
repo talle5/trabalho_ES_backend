@@ -7,8 +7,11 @@ import { Atendimento } from './entities/atendimento.entity.js';
 import { Profissional } from './entities/profissional.entity.js';
 import { Triagem } from './entities/triagem.entity.js';
 import { SolicitacaoSaida } from './entities/solicitacao-saida.entity.js';
+
 import { PacientesModule } from './pacientes/pacientes.module.js';
 import { FilaModule } from './fila/fila.module.js';
+import { SolicitacoesSaidaModule } from './solicitacoes-saida/solicitacoes-saida.module.js';
+import { ConsultasModule } from './consultas/consultas.module.js';
 
 @Module({
   imports: [
@@ -26,7 +29,13 @@ import { FilaModule } from './fila/fila.module.js';
         username: config.get<string>('DB_USERNAME', 'postgres'),
         password: config.get<string>('DB_PASSWORD', ''),
         database: config.get<string>('DB_DATABASE', 'ubs'),
-        entities: [Paciente, Atendimento, Profissional, Triagem,Paciente, Atendimento, Profissional, Triagem, SolicitacaoSaida],
+        entities: [
+          Paciente,
+          Atendimento,
+          Profissional,
+          Triagem,
+          SolicitacaoSaida,
+        ],
         synchronize: false,
         ssl: {
           rejectUnauthorized: false,
@@ -35,6 +44,8 @@ import { FilaModule } from './fila/fila.module.js';
     }),
 
     FilaModule,
+    SolicitacoesSaidaModule,
+    ConsultasModule,
   ],
 })
 export class AppModule {}
