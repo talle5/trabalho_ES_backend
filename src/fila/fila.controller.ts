@@ -2,6 +2,7 @@ import {
   Controller,
   Get,
   Patch,
+  Post,
   Param,
   ParseIntPipe,
   Body,
@@ -23,6 +24,17 @@ export class FilaController {
   @Get(':id')
   buscarAtendimento(@Param('id', ParseIntPipe) id: number) {
     return this.filaService.buscarAtendimento(id);
+  }
+
+  @Post()
+  criarAtendimento(
+    @Body()
+    dados: {
+      pacienteId: number;
+      senha: string;
+    },
+  ) {
+    return this.filaService.criarAtendimento(dados);
   }
 
   @Patch(':id/status')
