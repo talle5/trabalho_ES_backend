@@ -8,8 +8,9 @@ async function bootstrap() {
 
   const config = new DocumentBuilder()
     .setTitle('Saúde Digital - API da UBS')
-    .setDescription('Fila, consultas e solicitações de saída')
+    .setDescription('Fila, consultas, solicitações de saída e login')
     .setVersion('1.0')
+    .addBearerAuth()
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('docs', app, document);

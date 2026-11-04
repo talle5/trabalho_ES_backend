@@ -7,11 +7,13 @@ import { Atendimento } from './entities/atendimento.entity.js';
 import { Profissional } from './entities/profissional.entity.js';
 import { Triagem } from './entities/triagem.entity.js';
 import { SolicitacaoSaida } from './entities/solicitacao-saida.entity.js';
+import { Usuario } from './entities/usuario.entity.js';
 
 import { PacientesModule } from './pacientes/pacientes.module.js';
 import { FilaModule } from './fila/fila.module.js';
 import { SolicitacoesSaidaModule } from './solicitacoes-saida/solicitacoes-saida.module.js';
 import { ConsultasModule } from './consultas/consultas.module.js';
+import { AuthModule } from './auth/auth.module.js';
 
 @Module({
   imports: [
@@ -35,6 +37,7 @@ import { ConsultasModule } from './consultas/consultas.module.js';
           Profissional,
           Triagem,
           SolicitacaoSaida,
+          Usuario,
         ],
         synchronize: false,
         ssl: {
@@ -46,6 +49,7 @@ import { ConsultasModule } from './consultas/consultas.module.js';
     FilaModule,
     SolicitacoesSaidaModule,
     ConsultasModule,
+    AuthModule,
   ],
 })
 export class AppModule {}
