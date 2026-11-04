@@ -3,9 +3,11 @@ import {
   PrimaryGeneratedColumn,
   Column,
   ManyToOne,
+  JoinColumn,
   CreateDateColumn,
 } from 'typeorm';
-import { Paciente } from './paciente.entity.js';
+import type { Paciente } from './paciente.entity.js';
+import type { Profissional } from './profissional.entity.js';
 
 export enum StatusAtendimento {
   AGUARDANDO = 'AGUARDANDO',
@@ -33,8 +35,12 @@ export class Atendimento {
   @CreateDateColumn({ name: 'data_hora_chegada' })
   dataHoraChegada: Date;
 
-  @ManyToOne(() => Paciente, (paciente) => paciente.atendimentos, {
+  @ManyToOne('Paciente', 'atendimentos', {
     nullable: false,
   })
   paciente: Paciente;
+
+  @ManyToOne('Profissional', { nullable: true })
+  @JoinColumn({ name: 'profissional_id' })
+  profissional: Profissional | null;
 }

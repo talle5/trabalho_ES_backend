@@ -11,6 +11,11 @@ export class Profissional {
   @Column({ length: 80 })
   cargo: string;
 
-  @Column({ name: 'registro_profissional', length: 50, nullable: true })
+  @Column({
+    name: 'registro_profissional',
+    type: 'varchar',
+    length: 50,
+    nullable: true,
+  })
   registroProfissional: string | null;
 }

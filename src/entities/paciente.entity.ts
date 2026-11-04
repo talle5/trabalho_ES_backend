@@ -9,7 +9,7 @@ export class Paciente {
   @Column({ length: 150 })
   nome: string;
 
-  @Column({ length: 20, nullable: true })
+  @Column({ type: 'varchar', length: 20, nullable: true })
   telefone: string | null;
 
   @Column({ length: 50, unique: true })
