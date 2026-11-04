@@ -24,7 +24,7 @@ export class FilaService {
 
   // Lista os profissionais (abas da tela de fila)
   async listarProfissionais() {
-    return this.profissionalRepository.find({ order: { nome: 'ASC' } });
+    return this.profissionalRepository.find({ order: { id: 'ASC' } });
   }
 
   // Lista a fila, com posição, filtro por profissional e busca
