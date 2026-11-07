@@ -1,4 +1,4 @@
-import { Controller, Post, Get, Body } from '@nestjs/common';
+import { Controller, Post, Get, Body, Query } from '@nestjs/common';
 
 import { PacientesService } from './pacientes.service.js';
 
@@ -14,7 +14,7 @@ export class PacientesController {
   }
 
   @Get()
-  listar() {
-    return this.pacientesService.listar();
+  listar(@Query('busca') busca?: string) {
+    return this.pacientesService.listar(busca);
   }
 }

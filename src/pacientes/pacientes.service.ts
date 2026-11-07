@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { ILike, Repository } from 'typeorm';
 
 import { Paciente } from '../entities/paciente.entity.js';
 
@@ -21,7 +21,20 @@ export class PacientesService {
     return this.pacienteRepository.save(paciente);
   }
 
-  async listar() {
-    return this.pacienteRepository.find();
+  // Lista todos ou filtra por nome/CPF (identificador)
+  async listar(busca?: string) {
+    const termo = busca?.trim();
+
+    if (!termo) {
+      return this.pacienteRepository.find({ order: { nome: 'ASC' } });
+    }
+
+    return this.pacienteRepository.find({
+      where: [
+        { nome: ILike(`%${termo}%`) },
+        { identificador: ILike(`%${termo}%`) },
+      ],
+      order: { nome: 'ASC' },
+    });
   }
 }
