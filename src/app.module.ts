@@ -14,6 +14,7 @@ import { FilaModule } from './fila/fila.module.js';
 import { SolicitacoesSaidaModule } from './solicitacoes-saida/solicitacoes-saida.module.js';
 import { ConsultasModule } from './consultas/consultas.module.js';
 import { AuthModule } from './auth/auth.module.js';
+import { PacienteAppModule } from './paciente-app/paciente-app.module.js';
 
 @Module({
   imports: [
@@ -50,6 +51,7 @@ import { AuthModule } from './auth/auth.module.js';
     SolicitacoesSaidaModule,
     ConsultasModule,
     AuthModule,
+    PacienteAppModule,
   ],
 })
 export class AppModule {}

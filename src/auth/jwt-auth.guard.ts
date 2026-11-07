@@ -11,6 +11,7 @@ type RequisicaoAutenticada = {
   usuarioId?: number;
 };
 
+// Guard do FUNCIONÁRIO: recusa tokens de paciente
 @Injectable()
 export class JwtAuthGuard implements CanActivate {
   constructor(private readonly jwtService: JwtService) {}
@@ -24,7 +25,15 @@ export class JwtAuthGuard implements CanActivate {
     }
 
     try {
-      const payload = await this.jwtService.verifyAsync<{ sub: number }>(token);
+      const payload = await this.jwtService.verifyAsync<{
+        sub: number;
+        tipo?: string;
+      }>(token);
+
+      if (payload.tipo !== 'funcionario') {
+        throw new UnauthorizedException('Token inválido');
+      }
+
       request.usuarioId = payload.sub;
       return true;
     } catch {

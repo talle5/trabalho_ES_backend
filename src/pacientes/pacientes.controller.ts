@@ -8,7 +8,16 @@ export class PacientesController {
 
   @Post()
   criar(
-    @Body() dados: { nome: string; identificador: string; telefone?: string },
+    @Body()
+    dados: {
+      nome: string;
+      identificador: string;
+      telefone?: string;
+      email?: string;
+      dataNascimento?: string;
+      endereco?: string;
+      senha?: string;
+    },
   ) {
     return this.pacientesService.criar(dados);
   }
