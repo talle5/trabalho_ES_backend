@@ -1,0 +1,52 @@
+The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the resolve.tsconfigPaths option. You can remove the plugin and set resolve.tsconfigPaths: true in your Vite config instead.
+
+ RUN  v4.1.11 /workspaces/trabalho_ES_backend
+
+ ✓ src/auth/jwt-auth.guard.spec.ts > JwtAuthGuard (funcionário) > recusa requisição sem token 3ms
+ ✓ src/auth/jwt-auth.guard.spec.ts > JwtAuthGuard (funcionário) > aceita token de funcionário e guarda o id na requisição 1ms
+ ✓ src/auth/jwt-auth.guard.spec.ts > JwtAuthGuard (funcionário) > recusa token de paciente com a mensagem "Token inválido" 1ms
+ ✓ src/auth/jwt-auth.guard.spec.ts > JwtAuthGuard (funcionário) > recusa token expirado ou adulterado 1ms
+ ✓ src/app.controller.spec.ts > AppController > root > should return "Hello World!" 106ms
+ ✓ src/paciente-app/paciente-app.service.spec.ts > PacienteAppService > faz login com o CPF digitado sem pontuação 21ms
+ ✓ src/paciente-app/paciente-app.service.spec.ts > PacienteAppService > faz login com o CPF pontuado 4ms
+ ✓ src/paciente-app/paciente-app.service.spec.ts > PacienteAppService > faz login com o e-mail em qualquer caixa 4ms
+ ✓ src/paciente-app/paciente-app.service.spec.ts > PacienteAppService > a resposta do login mascara o CPF e não traz o hash 4ms
+ ✓ src/paciente-app/paciente-app.service.spec.ts > PacienteAppService > recusa senha errada 5ms
+ ✓ src/paciente-app/paciente-app.service.spec.ts > PacienteAppService > recusa paciente inexistente 2ms
+ ✓ src/paciente-app/paciente-app.service.spec.ts > PacienteAppService > recusa paciente que ainda não tem senha cadastrada 2ms
+ ✓ src/paciente-app/paciente-app.service.spec.ts > PacienteAppService > recusa login vazio sem consultar o banco 2ms
+ ✓ src/paciente-app/paciente-app.service.spec.ts > PacienteAppService > o perfil traz os dados do cadastro com o CPF mascarado 3ms
+ ✓ src/paciente-app/paciente-app.service.spec.ts > PacienteAppService > o perfil de um paciente inexistente lança NotFound 2ms
+ ✓ src/paciente-app/paciente-app.service.spec.ts > PacienteAppService > redefinir a senha exige pelo menos 6 caracteres 2ms
+ ✓ src/paciente-app/paciente-app.service.spec.ts > PacienteAppService > redefinir a senha guarda só o hash da nova senha 177ms
+ ✓ src/auth/auth.service.spec.ts > AuthService (funcionário) > faz login e devolve o token do tipo funcionário e o perfil sem senha 19ms
+ ✓ src/auth/auth.service.spec.ts > AuthService (funcionário) > normaliza o e-mail antes de procurar o usuário 20ms
+ ✓ src/auth/auth.service.spec.ts > AuthService (funcionário) > recusa usuário inexistente 8ms
+ ✓ src/auth/auth.service.spec.ts > AuthService (funcionário) > recusa senha errada 5ms
+ ✓ src/auth/auth.service.spec.ts > AuthService (funcionário) > a troca de senha exige a senha atual correta 5ms
+ ✓ src/auth/auth.service.spec.ts > AuthService (funcionário) > a nova senha precisa ter pelo menos 8 caracteres 4ms
+ ✓ src/auth/auth.service.spec.ts > AuthService (funcionário) > troca a senha guardando apenas o hash da nova 168ms
+ ✓ src/auth/auth.service.spec.ts > AuthService (funcionário) > não deixa trocar o e-mail por um que já é de outro usuário 3ms
+ ✓ src/auth/auth.service.spec.ts > AuthService (funcionário) > telefone vazio vira nulo no perfil 3ms
+ ✓ src/fila/fila.service.spec.ts > FilaService > lista os profissionais na ordem do cadastro 4ms
+ ✓ src/fila/fila.service.spec.ts > FilaService > devolve a fila com a posição de cada paciente 1ms
+ ✓ src/fila/fila.service.spec.ts > FilaService > filtra a consulta ao banco pelo profissional informado 2ms
+ ✓ src/fila/fila.service.spec.ts > FilaService > a busca por paciente mantém a posição original 1ms
+ ✓ src/fila/fila.service.spec.ts > FilaService > a busca também encontra pelo nome do profissional 1ms
+ ✓ src/fila/fila.service.spec.ts > FilaService > remover paciente marca o atendimento como CANCELADO 1ms
+ ✓ src/fila/fila.service.spec.ts > FilaService > atualizar o status de um atendimento inexistente lança NotFound 1ms
+ ✓ src/fila/fila.service.spec.ts > FilaService > não cria atendimento para paciente inexistente 1ms
+ ✓ src/fila/fila.service.spec.ts > FilaService > não cria atendimento para profissional inexistente 1ms
+ ✓ src/fila/fila.service.spec.ts > FilaService > cria o atendimento como AGUARDANDO com a senha informada 1ms
+ ✓ src/solicitacoes-saida/solicitacoes-saida.service.spec.ts > SolicitacoesSaidaService > lista as pendentes com nome e CPF do paciente 4ms
+ ✓ src/solicitacoes-saida/solicitacoes-saida.service.spec.ts > SolicitacoesSaidaService > devolve profissional nulo quando o atendimento não tem profissional 1ms
+ ✓ src/solicitacoes-saida/solicitacoes-saida.service.spec.ts > SolicitacoesSaidaService > conta as solicitações pendentes para o menu 1ms
+ ✓ src/solicitacoes-saida/solicitacoes-saida.service.spec.ts > SolicitacoesSaidaService > aceitar uma solicitação inexistente lança NotFound 2ms
+ ✓ src/solicitacoes-saida/solicitacoes-saida.service.spec.ts > SolicitacoesSaidaService > não aceita duas vezes a mesma solicitação 1ms
+ ✓ src/solicitacoes-saida/solicitacoes-saida.service.spec.ts > SolicitacoesSaidaService > aceitar marca a solicitação como ACEITA e tira o paciente da fila 1ms
+
+ Test Files  6 passed (6)
+      Tests  42 passed (42)
+   Start at  17:13:07
+   Duration  3.90s (transform 172ms, setup 0ms, import 2.35s, tests 608ms, environment 1ms)
+

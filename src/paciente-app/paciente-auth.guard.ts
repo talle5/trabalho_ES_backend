@@ -36,7 +36,11 @@ export class PacienteAuthGuard implements CanActivate {
 
       request.pacienteId = payload.sub;
       return true;
-    } catch {
+    } catch (erro) {
+      if (erro instanceof UnauthorizedException) {
+        throw erro;
+      }
+
       throw new UnauthorizedException('Token inválido ou expirado');
     }
   }
